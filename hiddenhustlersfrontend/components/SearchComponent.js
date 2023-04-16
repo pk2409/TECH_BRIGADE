@@ -22,7 +22,7 @@ export default function SearchComponent() {
                     if (event.key === "Enter") {
                         handleClick();
                     }
-                }} id='theMaininput' placeholder='Search For Movies,TV Series.... 🍿' />
+                }} id='theMaininput' placeholder='Search For Web Development/Designing a Poster.... etc.' />
 
                 <Button colorScheme='cyan' onClick={handleClick}>Search</Button>
             </HStack>

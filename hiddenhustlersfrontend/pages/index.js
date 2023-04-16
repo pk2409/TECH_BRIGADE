@@ -2,7 +2,7 @@ import SearchComponent from "../components/SearchComponent";
 import Navbar from "../components/Navbar";
 import Head from "next/head";
 import { Spacer, Container, Stack } from "@chakra-ui/react";
-import Hero from "../components/Home/Hero";
+import Hero_Lol from "../components/Home/Hero_Lol";
 import Features from "../components/Home/Features";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
 
       {/* <SearchComponent /> */}
 
- <Hero />
+ <Hero_Lol />
  <Spacer h={5}>
 
  </Spacer>

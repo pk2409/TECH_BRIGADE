@@ -6,6 +6,7 @@ import {
     Heading,
     Icon,
     Stack,
+    Image,
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
@@ -18,15 +19,55 @@ import {
     FcManager,
   } from 'react-icons/fc';
   
-  const Card = ({ heading, description, icon, href }) => {
+  
+
+
+
+
+
+  const Card = ({ heading, description, icon, href,image }) => {
     return (
       <Box
-        maxW={{ base: 'full', md: '275px' }}
-        w={'full'}
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
-        p={5}>
+          role={'group'}
+          p={6}
+          m={6}
+          maxW={'330px'}
+          w={'full'}
+          bg={useColorModeValue('white', 'gray.800')}
+          boxShadow={'2xl'}
+          rounded={'lg'}
+          pos={'relative'}
+          zIndex={1}>
+          <Box
+            rounded={'lg'}
+            mt={-12}
+            pos={'relative'}
+            height={'230px'}
+            _after={{
+              transition: 'all .3s ease',
+              content: '""',
+              w: 'full',
+              h: 'full',
+              pos: 'absolute',
+              top: 5,
+              left: 0,
+              backgroundImage: `url(${image})`,
+              filter: 'blur(15px)',
+              zIndex: -1,
+            }}
+            _groupHover={{
+              _after: {
+                filter: 'blur(20px)',
+              },
+            }}>
+            <Image
+              rounded={'lg'}
+              height={230}
+              width={282}
+              objectFit={'cover'}
+              src={image}
+            />
+          </Box>
         <Stack align={'start'} spacing={2}>
           <Flex
             w={16}
@@ -44,9 +85,7 @@ import {
               {description}
             </Text>
           </Box>
-          <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
-            Learn more
-          </Button>
+          
         </Stack>
       </Box>
     );
@@ -64,46 +103,65 @@ import {
           </Text>
         </Stack>
   
-        <Container maxW={'5xl'} mt={12}>
+        <Container maxW={'8xl'} mt={12}>
           <Flex flexWrap="wrap" gridGap={6} justify="center">
             <Card
-              heading={'Heading'}
+              heading={'Anonymity'}
               icon={<Icon as={FcAssistant} w={10} h={10} />}
               description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                'Experience the freedom of complete anonymity with our  product, allowing you to work without fear of judgement or exposure.'
               }
+              image={"https://i.ibb.co/4Y369Y7/hh4.jpg"}
               href={'#'}
             />
             <Card
-              heading={'Heading'}
+              heading={'Job Ready'}
               icon={<Icon as={FcCollaboration} w={10} h={10} />}
               description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                'With our product, freelancers can become job ready and start earning right away, without the need for extensive training or experience..'
               }
+              image={"https://i.ibb.co/L1Z0tmk/hh7.jpg"}
               href={'#'}
             />
+
             <Card
-              heading={'Heading'}
+              heading={'Membership Benefits'}
+              icon={<Icon as={FcCollaboration} w={10} h={10} />}
+              description={
+                "Enjoy exclusive membership benefits including Canva Pro, GitHub Premium"
+              }
+              image={"https://i.ibb.co/qdw5hxz/hh6.jpg"}
+              href={'#'}
+            />
+
+            <Card
+              heading={'Proffesional Accreditation'}
               icon={<Icon as={FcDonate} w={10} h={10} />}
               description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                'Earn Badges, Certifications, and Letters of Recommendation to Enhance Your Profile for future interns'
               }
+              image={"https://i.ibb.co/vZJ7wDR/hh9.jpg"}
+
               href={'#'}
             />
             <Card
-              heading={'Heading'}
+              heading={'Secure Transactions'}
               icon={<Icon as={FcManager} w={10} h={10} />}
               description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                'Our point-based transaction system ensures transparency and reliability for both freelancers and clients, making payments simple and hassle-free.'
               }
+              image={"https://i.ibb.co/F3BbBRp/hh10.jpg"}
+
               href={'#'}
             />
             <Card
-              heading={'Heading'}
+              heading={'Trend-Driven Skill Suggestion'}
               icon={<Icon as={FcAbout} w={10} h={10} />}
               description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                'Stay ahead of the competition with trend-driven skill suggestions provided by our product, keeping  up-to-date with the latest demands in the market.'
               }
+              image={"https://i.ibb.co/HhpFqk5/hh8.jpg"}
+
               href={'#'}
             />
           </Flex>

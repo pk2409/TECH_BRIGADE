@@ -3,6 +3,7 @@ import {
     Button,
     IconButton,
     Flex,
+    Spacer,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { FaSignOutAlt } from 'react-icons/fa';
@@ -16,7 +17,7 @@ import jwt_decode from "jwt-decode";
 
 export default function Navbar() {
     var router = useRouter();
-    const [authToken, setauthToken] = useLocalStorage("token", "");
+    const [authToken, setauthToken] = useLocalStorage("token", null);
     const [user, setUser] = useState({});
 
 
@@ -44,6 +45,20 @@ export default function Navbar() {
                     {authToken != null && <><Button colorScheme='red' variant='outline' onClick={() => router.push('/dashboard')}>
                         Dashboard.
                     </Button>
+
+                        {user && user.isProvider && <>
+                            <Button colorScheme='red' variant='outline' onClick={() => router.push('/addjobs')}>
+                                Add jobs.
+                            </Button>
+                        </>}
+
+
+                        {user && !user.isProvider && <>
+                            <Button colorScheme='red' variant='outline' onClick={() => window.location.replace('/skilltest.html')}>
+                                Skill Test.
+                            </Button>
+                        </>}
+
                         <IconButton
                             size="md"
                             fontSize="lg"
@@ -51,16 +66,11 @@ export default function Navbar() {
                             variant="ghost"
                             color="current"
                             marginLeft="2"
-                            onClick={() => {setauthToken(null);window.location.replace('/')}}
+                            onClick={() => { setauthToken(null); window.location.replace('/') }}
                             icon={<FaSignOutAlt />}
                         />
                     </>}
 
-                    {user && user.isProvider && <>
-                    <Button colorScheme='red' variant='outline' onClick={() => router.push('/addjobs')}>
-                        Add jobs.
-                    </Button>
-                    </>}
 
 
                     <ColorModeSwitcher />
